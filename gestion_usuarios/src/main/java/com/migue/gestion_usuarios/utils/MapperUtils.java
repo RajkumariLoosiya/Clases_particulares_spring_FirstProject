@@ -21,13 +21,13 @@ public class MapperUtils {
 	public <T> T map(Object o , Class<?> c) throws JsonProcessingException{
 		
 		if(o instanceof Collection<?>) {
-			ArrayNode arraynode = parseJson((List)o);
-			Object target = objectmapper.treeToValue(arraynode, c);
-			return (T) target;
+			ArrayNode arraynode = parseJson((List)o); // Descómponemos los arrays del json.
+			Object target = objectmapper.treeToValue(arraynode, c); // Formamos objetos con los arrays. 
+			return (T) target; // Casteamos a genérico la operación anterior. 
 		}
 		
-		ObjectNode objN = parseJson(o);
-		Object target = objectmapper.treeToValue(objN, c);
+		ObjectNode objN = parseJson(o); // Casteo con más pasos. 
+		Object target = objectmapper.treeToValue(objN, c); // Formamos objetos con los arrays de objN.
 		return (T) target; 
 		
 	} 

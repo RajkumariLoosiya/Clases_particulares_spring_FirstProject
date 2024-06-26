@@ -21,7 +21,7 @@ import com.migue.gestion_usuarios.utils.MapperUtils;
 import com.migue.gestion_usuarios.vo.UserVO;
 
 @RestController
-@RequestMapping("/security/users")
+@RequestMapping("/security/users/")
 public class UserController {
 
 	@Autowired
@@ -35,14 +35,14 @@ public class UserController {
 		return mpU.map(userService.getAllUsers(), List.class);
 	}
 
-	@GetMapping("/{id}")
-	public User getUserById(@PathVariable Long id) {
-		return userService.getUserById(id);
-	}
-
 	@PostMapping
 	public User createUser(@RequestBody User user) {
 		return userService.createUser(user);
+	}
+
+	@GetMapping("/{id}")
+	public User getUserById(@PathVariable Long id) {
+		return userService.getUserById(id);
 	}
 
 	@PutMapping("/{id}")
